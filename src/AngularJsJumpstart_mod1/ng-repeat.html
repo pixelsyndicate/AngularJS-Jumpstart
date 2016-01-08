@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="iterationApp">
+<head>
+    <title>AngularJS Hello World</title>
+    <script src="Scripts/angular.min.js"></script>
+    <meta charset="utf-8" />
+    <script>
+        // this is your ng-app
+        angular.module("iterationApp", [])
+            .controller('iterationController', ['$scope', function ($scope) {
+                // this is your ng-model (or ng-bind / {{ }} (one-way binding))
+                $scope.alphas = ['A', 'B', 'C', 'D'];
+
+            }]);
+    </script>
+</head>
+<body>
+    <div ng-init="names=['Dave','Jeff','Heedy','Danny']">
+        <ul>
+            <li data-ng-repeat="name in names">{{ name }}</li>
+        </ul>
+
+    </div>
+
+    <div>
+        <ul data-ng-controller="iterationController">
+            <li data-ng-repeat="alpha in alphas">{{ alpha }}</li>
+        </ul>
+    </div>
+</body>
+</html>
