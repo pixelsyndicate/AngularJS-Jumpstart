@@ -1,22 +1,37 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" ng-app>
+<html lang="en" data-ng-app="bindExample">
 <head>
     <meta charset="utf-8" />
     <title>AngularJS Hello World</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="Scripts/angular.min.js"></script>
     <script src="app.js"></script>
+    <script>
+    // this is your ng-app
+    angular.module('bindExample', [])
+        // this is your ng-controller
+        .controller('ExampleController', ['$scope', function ($scope) {
+            // this is your ng-model (or ng-bind / {{ }} (one-way binding))
+            $scope.name = 'John';
+            $scope.lastName = 'Doe';
+            $scope.isHidden = false;
+            $scope.fullName = function () {
+                return $scope.name + ' ' + $scope.lastName;
+            }
+        }]);
+    </script>
+
 </head>
-<body>
-<!--<h1>TypeScript HTML App</h1>-->
+<body data-ng-controller="ExampleController">
+    <!--<h1>TypeScript HTML App</h1>-->
     <!-- the ng-model is the place where the input data is stored -->
     Name: <input type="text" ng-model="name" />
-<div id="content">
-    
-    <!-- demonstrate 'binding' -->
-    {{ name }}
+    <div id="content">
 
-</div>
+        <!-- demonstrate 'binding' -->
+        {{ name }} <b>or</b> {{fullName()}}
+
+    </div>
 </body>
 </html>
