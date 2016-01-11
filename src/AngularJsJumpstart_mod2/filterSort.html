@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <title>Filter and Sorting with AngularJs</title>
+
+    <!--  -->
+    <style>
+        .table>tbody>tr>th {
+            white-space: nowrap;
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Chrome/Safari */
+            
+            -moz-user-select: none;
+            /* Firefox */
+            
+            -ms-user-select: none;
+            /* IE10+ */
+            /* Rules below not implemented in browsers yet */
+            
+            -o-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <style>
+    </style>
+    <script src="scripts/angular.js"></script>
+    <script>
+        angular.module('myApp', []).controller('default', ['$scope', function ($scope) {
+
+
+            $scope.orderByMe = function (x) {
+
+                if ($scope.myOrderBy != undefined && $scope.myOrderBy.substr(0, 1) == '-') {
+                    $scope.myOrderBy = x;
+
+                    var leadingChar = $scope.myOrderBy.substr(0, 1);
+                } else {
+                    $scope.myOrderBy = '-' + x;
+                }
+
+                switch (x) {
+                case 'name':
+                    $scope.ascCity = null;
+                    $scope.ascJoined = null;
+                    $scope.ascOrderTotal = null;
+                    break;
+                case 'city':
+                    $scope.ascName = null;
+                    $scope.ascJoined = null;
+                    $scope.ascOrderTotal = null;
+                    break;
+                case 'joined':
+                    $scope.ascCity = null;
+                    $scope.ascName = null;
+                    $scope.ascOrderTotal = null;
+                    break;
+                case 'orderTotal':
+                    $scope.ascCity = null;
+                    $scope.ascJoined = null;
+                    $scope.ascName = null;
+                    break;
+                }
+            }
+
+            $scope.customers = [
+                {
+                    joined: '2002-04-26',
+                    name: 'John',
+                    city: 'Salt Lake City',
+                    orderTotal: 23.993,
+                    sortOrderAsc: true
+                },
+                {
+                    joined: '2005-09-15',
+                    name: 'Ceres',
+                    city: 'Mobile',
+                    orderTotal: 22.1,
+                    sortOrderAsc: true
+                },
+                {
+                    joined: '1998-11-03',
+                    name: 'Melvin',
+                    city: 'Dallas',
+                    orderTotal: 98.55,
+                    sortOrderAsc: true
+                },
+                {
+                    joined: '2015-02-31',
+                    name: 'Erin',
+                    city: 'Shelby',
+                    orderTotal: 10001.112,
+                    sortOrderAsc: true
+                }];
+        }])
+    </script>
+</head>
+
+<body ng-controller="default">
+
+    <div class="container">
+        <div class="row">
+
+            <label>Filter By Name Only:
+                <input type="text" ng-model="customerFilter.name" /> Ordering By: {{ myOrderBy }} {{ myOrderBy.substring(0,1)=='-'?'DESC':'ASC' }}
+            </label>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th ng-click="orderByMe('name');ascName=!ascName;">Name
+                        <i class="glyphicon" ng-class="{'glyphicon glyphicon-arrow-up' : ascName, 'glyphicon glyphicon-arrow-down' : !ascName, 'hidden' : ascName==null}"></i>
+                    </th>
+                    <th ng-click="orderByMe('city');ascCity=!ascCity;">City <i ng-class="{'glyphicon glyphicon-arrow-up' : ascCity, 'glyphicon glyphicon-arrow-down' : !ascCity, 'hidden' : ascCity==null}"></i>
+                    </th>
+                    <th ng-click="orderByMe('joined');ascJoined=!ascJoined;">Date Joined <i ng-class="{'glyphicon glyphicon-arrow-up' : ascJoined, 'glyphicon glyphicon-arrow-down' : !ascJoined, 'hidden' : ascJoined==null}"></i>
+                    </th>
+                    <th ng-click="orderByMe('orderTotal');ascOrderTotal=!ascOrderTotal;">Order Total <i ng-class="{'glyphicon glyphicon-arrow-up' : ascOrderTotal, 'glyphicon glyphicon-arrow-down' : !ascOrderTotal, 'hidden' : ascOrderTotal==null}"></i>
+                    </th>
+                </tr>
+                <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:myOrderBy">
+                    <td ng-bind="cust.name | uppercase"></td>
+                    <td>{{ cust.city | lowercase}}</td>
+                    <td>{{ cust.joined | date}}</td>
+                    <td>{{ cust.orderTotal | currency }}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <div class="well well-sm">
+        <h3>variables:</h3>
+        <ul>
+            <li class="">ascName = {{ ascName }}</li>
+            <li class="">ascCity = {{ ascCity }}</li>
+            <li class="">ascJoined = {{ ascJoined }}</li>
+            <li class="">ascOrderTotal = {{ ascOrderTotal }}</li>
+            <li class="">myOrderBy = {{ myOrderBy }}</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
