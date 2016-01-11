@@ -1,0 +1,68 @@
+﻿
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/SimpleController.js"></script>
+<div data-ng-app="simpleApp">
+
+
+    <div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET SPA using AngularJs, HTML, CSS, and JavaScript.</p>
+        <p><a href="https://angularjs.org/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <div data-ng-controller="simpleController">
+        <div class="row">
+            <div class="form-group form-inline">
+                <label>
+                    Filter By:
+                </label>
+                <input type="text" ng-model="customerFilter" class="form-control" />
+                <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th ng-click="orderByMe('name');">
+                        Name
+                        <i class="glyphicon" ng-class="{'glyphicon glyphicon-arrow-up' : reverse, 'glyphicon glyphicon-arrow-down' : !reverse, 'hidden' : sortBy!='name'}"></i>
+                    </th>
+                    <th ng-click="orderByMe('city');">
+                        City <i ng-class="{'glyphicon glyphicon-arrow-up' : reverse, 'glyphicon glyphicon-arrow-down' : !reverse, 'hidden' : sortBy!='city'}"></i>
+                    </th>
+                    <th ng-click="orderByMe('joined');">
+                        Date Joined <i ng-class="{'glyphicon glyphicon-arrow-up' : reverse, 'glyphicon glyphicon-arrow-down' : !reverse, 'hidden' : sortBy!='joined'"></i>
+                    </th>
+                    <th ng-click="orderByMe('orderTotal');">
+                        Order Total <i ng-class="{'glyphicon glyphicon-arrow-up' : reverse, 'glyphicon glyphicon-arrow-down' : !reverse, 'hidden' : sortBy!='orderTotal'}"></i>
+                    </th>
+                </tr>
+                <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
+                    <td ng-bind="cust.name | uppercase"></td>
+                    <td>{{ cust.city | lowercase}}</td>
+                    <td>{{ cust.joined | date}}</td>
+                    <td>{{ cust.orderTotal | currency }}</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="row">
+            Ordering By: {{ sortBy }} {{ reverse?'DESC':'ASC' }}
+        </div>
+
+        <div class="row">Total Customers: {{ customers.length }}</div>
+
+        <div class="well well-sm">
+            <h3>variables:</h3>
+            <ul>
+                <li class="">sortBy = {{ sortBy }}</li>
+                <li class="">reverse = {{ reverse }}</li>
+                <li class="">customerFilter = {{ customerFilter }}</li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
