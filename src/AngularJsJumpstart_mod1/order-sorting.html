@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS ordering and sorting</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body data-ng-init="customers=[
+          {
+          joined:'2002-04-26', name:'John', city:'Salt Lake City', orderTotal:23.993},
+          {
+          joined:'2005-09-15', name:'Ceres', city:'Mobile', orderTotal:22.1},
+          {
+          joined:'1998-11-03', name:'Melvin', city:'Dallas', orderTotal:98.55},
+          {
+          joined:'2015-02-31', name:'Erin', city:'Shelby', orderTotal:10001.112}
+          ]">
+    <!--<h1>TypeScript HTML App</h1>-->
+    <!-- the ng-model is the place where the input data is stored -->
+    Filter By: <input type="text" ng-model="customerFilter" />
+
+    <div id="content">
+        <!-- demonstrate 'filter' and 'sorting' -->
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Date Joined</th>
+                <th>Order Total</th>
+            </tr>
+            <tr ng-repeat="cust in customers | filter: customerFilter">
+                <td ng-bind="cust.name | uppercase"></td>
+                <td>{{ cust.city | lowercase}}</td>
+                <td>{{ cust.joined | date}}</td>
+                <td>{{ cust.orderTotal | currency }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
