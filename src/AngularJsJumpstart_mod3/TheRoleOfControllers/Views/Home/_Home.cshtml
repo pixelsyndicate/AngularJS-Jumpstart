@@ -2,36 +2,11 @@
 <script src="~/Scripts/angular.js"></script>
 <script src="~/Scripts/angular-animate.js"></script>
 <script src="~/Scripts/angular-route.js"></script>
+
 <script src="~/Scripts/app/SimpleModule.js"></script>
-<script src="~/Scripts/app/SimpleController.js"></script>
-<style>
-    table.table th {
-        background-color: #bbb;
-        cursor: pointer;
-        -webkit-user-select: none; /* Chrome/Safari */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* IE10+ */
-        /* Rules below not implemented in browsers yet */
-        -o-user-select: none;
-        user-select: none;
-    }
+<script src="~/Scripts/app/controllers/customerController.js"></script>
+<script src="~/Scripts/app/controllers/ordersController.js"></script>
 
- 
-
-        .label:hover {
-            transform: rotate(360deg);
-            background: #9351A6;
-            border-radius: 50%;
-        }
-
-    .rotate {
-        transition: all 0.5s ease-in-out;
-    }
-
-        .rotate:hover {
-            transition: all 1s ease-in-out;
-        }
-</style>
 <div data-ng-app="simpleApp">
 
 
@@ -42,52 +17,8 @@
 
     </div>
 
-    <div data-ng-controller="simpleController">
-        <div class="col-sm-8">
-            <div class="form-group form-inline">
-                <label>
-                    Filter By:
-                </label>
-                <input type="text" ng-model="customerFilter"  data-ng-mouseup="customerFilter = ''" class="form-control" />
-                <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
-            </div>
-        </div>
-        <div class="col-sm-4"><h4>Total Customers: {{ customers.length }}</h4></div>
-        <div class="row">
-            <table class="table table-bordered table-condensed">
-                <tr>
-                    <th ng-click="orderByMe('name');">
-                        Name
-                        <i class="glyphicon" ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='name', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='name', 'hidden' : sortBy!='name'}">
-                            <span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span>
-                        </i>
-                    </th>
-                    <th ng-click="orderByMe('city');">
-                        City <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='city', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='city', 'hidden' : sortBy!='city'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-                    </th>
-                    <th ng-click="orderByMe('joined');">
-                        Date Joined <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='joined', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='joined', 'hidden' : sortBy!='joined'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-                    </th>
-                    <th ng-click="orderByMe('orderTotal');">
-                        Order Total <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='orderTotal', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='orderTotal', 'hidden' : sortBy != 'orderTotal'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-                    </th>
-                </tr>
-                <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
-                    <td ng-bind="cust.name | uppercase"></td>
-                    <td>{{ cust.city | lowercase}}</td>
-                    <td>{{ cust.joined | date}}</td>
-                    <td>{{ cust.orderTotal | currency }}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="row well well-sm">
-            <h3>variables:</h3>
-            <ul>
-                <li class="">sortBy = {{ sortBy }}</li>
-                <li class="">reverse = {{ reverse }}</li>
-                <li class="">customerFilter = {{ customerFilter }}</li>
-            </ul>
-        </div>
+    <div ng-view>
+
     </div>
 
 
