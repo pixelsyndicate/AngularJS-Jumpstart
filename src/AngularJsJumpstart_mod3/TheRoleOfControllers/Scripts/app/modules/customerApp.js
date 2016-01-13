@@ -1,9 +1,9 @@
 ﻿
+angular.module('customerApp', ['ngAnimate', 'ngRoute']);
 
-    var myApp = angular.module('simpleApp', ['ngAnimate', 'ngRoute']);
 
-
-    myApp.config(function ($routeProvider) {
+angular.module('customerApp').config(
+    function ($routeProvider) {
         $routeProvider
             .when('/', {
                 controller: 'CustomerController',

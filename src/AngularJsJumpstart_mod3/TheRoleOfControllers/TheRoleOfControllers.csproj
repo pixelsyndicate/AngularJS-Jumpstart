@@ -264,6 +264,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\controllers\ordersController.js" />
+    <Content Include="Scripts\app\modules\customerApp.js" />
     <Content Include="Scripts\app\services\customersFactory.js" />
     <Content Include="Scripts\app\SimpleModule.js" />
     <Content Include="Scripts\app\views\customers.html" />

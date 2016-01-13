@@ -34,7 +34,7 @@
     // to ensure $scope parm isn't minified, inject it magically.
     CustomerController.$inject = ['$scope', 'customersFactory'];
 
-    myApp.controller('CustomerController', CustomerController);
+    angular.module('customerApp').controller('CustomerController', CustomerController);
 
 
 

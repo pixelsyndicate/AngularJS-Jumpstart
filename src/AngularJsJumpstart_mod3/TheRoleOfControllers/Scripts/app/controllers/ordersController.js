@@ -21,7 +21,7 @@
     // to ensure $scope parm isn't minified, inject it magically.
     OrdersController.$inject = ['$scope', '$routeParams', 'customersFactory'];
 
-    myApp.controller('OrdersController', OrdersController);
+    angular.module('customerApp').controller('OrdersController', OrdersController);
 
 
 
