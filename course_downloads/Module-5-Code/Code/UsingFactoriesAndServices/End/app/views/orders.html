@@ -1,5 +1,5 @@
-﻿<h2>{{ name }}'s Orders</h2>
-<table class="table table-condensed table-bordered">
+<h2>{{ customer.name }}'s Orders</h2>
+<table>
     <tr>
         <th>Product</th>
         <th>Total</th>
@@ -9,4 +9,3 @@
         <td>{{ order.total | currency }}</td>
     </tr>
 </table>
-<a href="#">back to customers.</a>
