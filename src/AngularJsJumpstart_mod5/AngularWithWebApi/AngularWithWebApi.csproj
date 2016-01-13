@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,20 +170,14 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app\app.datamodel.js" />
-    <Content Include="Scripts\app\app.viewmodel.js" />
-    <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\controllers\customerController.js" />
     <Content Include="Scripts\app\controllers\ordersController.js" />
-    <Content Include="Scripts\app\home.viewmodel.js" />
     <Content Include="Scripts\app\modules\customerApp.js" />
     <Content Include="Scripts\app\services\customersFactory.js" />
     <Content Include="Scripts\app\services\customersService.js" />
     <Content Include="Scripts\app\services\values.js" />
-    <Content Include="Scripts\app\SimpleModule.js" />
     <Content Include="Scripts\app\views\customers.html" />
     <Content Include="Scripts\app\views\orders.html" />
-    <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
@@ -974,7 +969,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\api\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

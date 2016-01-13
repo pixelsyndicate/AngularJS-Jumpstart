@@ -11,7 +11,13 @@
         // a private function to pre-get all orders for a particular customer
         function init() {
             // search the customers for the customerId
-            $scope.customer = customersFactory.getCustomer(customerId);
+            $scope.customer = customersFactory.getCustomer(customerId)
+            .success(function (customer) {
+                $scope.customer = customer;
+            })
+                .error(function (data, status, headers, config) {
+                    console.log("error: " + status);
+                });
         }
 
 

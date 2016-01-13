@@ -27,54 +27,59 @@
         }
 </style>
 <h3>{{ appSettings.title }}</h3>
-<div class="col-sm-8">
-    <div class="form-group form-inline">
-        <label>
-            Filter By:
-        </label>
-        <input type="text" ng-model="customerFilter" data-ng-mouseup="customerFilter = ''" class="form-control" />
-        <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="form-group form-inline">
+            <label>
+                Filter By:
+            </label>
+            <input type="text" ng-model="customerFilter" data-ng-mouseup="customerFilter = ''" class="form-control" />
+            <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h4>Total Customers: {{ customers.length }}</h4>
+    </div>
+    <div class="col-sm-12">
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th ng-click="orderByMe('name');">
+                    Name
+                    <i class="glyphicon" ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='name', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='name', 'hidden' : sortBy!='name'}">
+                        <span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span>
+                    </i>
+                </th>
+                <th ng-click="orderByMe('city');">
+                    City <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='city', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='city', 'hidden' : sortBy!='city'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
+                </th>
+                <th ng-click="orderByMe('joined');">
+                    Date Joined <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='joined', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='joined', 'hidden' : sortBy!='joined'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
+                </th>
+                <th ng-click="orderByMe('orderTotal');">
+                    Order Total <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='orderTotal', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='orderTotal', 'hidden' : sortBy != 'orderTotal'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
+                </th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
+                <td ng-bind="cust.name | uppercase"></td>
+                <td>{{ cust.city | lowercase}}</td>
+                <td>{{ cust.joined | date}}</td>
+                <td>{{ cust.orderTotal | currency }}</td>
+                <td><a href="#/orders/{{cust.id}}">view {{ cust.orders.length }} orders</a></td>
+            </tr>
+        </table>
+        <div class=" well well-sm">
+            <h3>variables:</h3>
+            <ul>
+                <li class="">sortBy = {{ sortBy }}</li>
+                <li class="">reverse = {{ reverse }}</li>
+                <li class="">customerFilter = {{ customerFilter }}</li>
+            </ul>
+        </div>
     </div>
 </div>
-<div class="col-sm-4">
-    <h4>Total Customers: {{ customers.length }}</h4></div>
-<div class="row">
-    <table class="table table-bordered table-condensed">
-        <tr>
-            <th ng-click="orderByMe('name');">
-                Name
-                <i class="glyphicon" ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='name', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='name', 'hidden' : sortBy!='name'}">
-                    <span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span>
-                </i>
-            </th>
-            <th ng-click="orderByMe('city');">
-                City <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='city', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='city', 'hidden' : sortBy!='city'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-            </th>
-            <th ng-click="orderByMe('joined');">
-                Date Joined <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='joined', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='joined', 'hidden' : sortBy!='joined'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-            </th>
-            <th ng-click="orderByMe('orderTotal');">
-                Order Total <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='orderTotal', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='orderTotal', 'hidden' : sortBy != 'orderTotal'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
-            </th>
-            <th>&nbsp;</th>
-        </tr>
-        <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
-            <td ng-bind="cust.name | uppercase"></td>
-            <td>{{ cust.city | lowercase}}</td>
-            <td>{{ cust.joined | date}}</td>
-            <td>{{ cust.orderTotal | currency }}</td>
-            <td><a href="#/orders/{{cust.id}}">view {{ cust.orders.length }} orders</a></td>
-        </tr>
-    </table>
-</div>
-<div class="row well well-sm">
-    <h3>variables:</h3>
-    <ul>
-        <li class="">sortBy = {{ sortBy }}</li>
-        <li class="">reverse = {{ reverse }}</li>
-        <li class="">customerFilter = {{ customerFilter }}</li>
-    </ul>
-</div>
 
-<footer><p>version {{ appSettings.version }}</p>
-    <p><i>{{ appSettings.date }}</i></p></footer>
+<footer>
+    <p>version {{ appSettings.version }}</p>
+    <p><i>{{ appSettings.date }}</i></p>
+</footer>

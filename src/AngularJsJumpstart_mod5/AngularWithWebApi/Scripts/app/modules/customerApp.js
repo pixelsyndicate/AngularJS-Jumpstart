@@ -7,11 +7,11 @@ angular.module('customerApp').config(
         $routeProvider
             .when('/', {
                 controller: 'CustomerController',
-                templateUrl: 'scripts/app/views/customers.html'
+                templateUrl: '../scripts/app/views/customers.html'
             })
             .when('/orders/:customerId', {
                 controller: 'OrdersController',
-                templateUrl: 'scripts/app/views/orders.html'
+                templateUrl: '../scripts/app/views/orders.html'
             })
             .otherwise({ redirectTo: '/' });
 

@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheRoleOfControllers", "TheRoleOfControllers\TheRoleOfControllers.csproj", "{B5AD8D35-D1C2-4231-A583-F1397AB6C7BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJsJumpstart_mod1", "..\AngularJsJumpstart_mod1\AngularJsJumpstart_mod1.csproj", "{E699DFE9-F1EF-46F9-8DA8-BC228F2DBE3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWithWebApi", "..\AngularJsJumpstart_mod5\AngularWithWebApi\AngularWithWebApi.csproj", "{75F5050B-4C84-426B-99DB-D43D5BF7AA02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B5AD8D35-D1C2-4231-A583-F1397AB6C7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5AD8D35-D1C2-4231-A583-F1397AB6C7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5AD8D35-D1C2-4231-A583-F1397AB6C7BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E699DFE9-F1EF-46F9-8DA8-BC228F2DBE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E699DFE9-F1EF-46F9-8DA8-BC228F2DBE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E699DFE9-F1EF-46F9-8DA8-BC228F2DBE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E699DFE9-F1EF-46F9-8DA8-BC228F2DBE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F5050B-4C84-426B-99DB-D43D5BF7AA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F5050B-4C84-426B-99DB-D43D5BF7AA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F5050B-4C84-426B-99DB-D43D5BF7AA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F5050B-4C84-426B-99DB-D43D5BF7AA02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

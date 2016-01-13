@@ -32,7 +32,14 @@
 
         function init() {
 
-            $scope.customers = customersFactory.getCustomers();
+            $scope.customers = customersFactory.getCustomers()
+                .success(function (customers) {
+                    console.log("found " + customers.length + " customers");
+                    $scope.customers = customers;
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("error: " + status);
+                });
 
         }
 
