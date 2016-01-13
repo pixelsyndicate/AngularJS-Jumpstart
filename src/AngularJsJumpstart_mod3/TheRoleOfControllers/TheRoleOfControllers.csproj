@@ -266,6 +266,7 @@
     <Content Include="Scripts\app\controllers\ordersController.js" />
     <Content Include="Scripts\app\modules\customerApp.js" />
     <Content Include="Scripts\app\services\customersFactory.js" />
+    <Content Include="Scripts\app\services\customersService.js" />
     <Content Include="Scripts\app\SimpleModule.js" />
     <Content Include="Scripts\app\views\customers.html" />
     <Content Include="Scripts\app\views\orders.html" />
