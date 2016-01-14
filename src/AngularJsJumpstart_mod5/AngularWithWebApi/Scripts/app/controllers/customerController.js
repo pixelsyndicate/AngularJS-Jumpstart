@@ -6,7 +6,7 @@
 (function () {
 
 
-    function CustomerController($scope, customersFactory, appSettings, $log) {
+    function CustomerController($scope, customersFactory, appSettings, $log, $window) {
 
 
         $scope.sortBy = 'name';
@@ -24,11 +24,12 @@
         }
 
         $scope.deleteCustomer = function (customerId) {
-            customerFactory.deleteCustomer(customerId)
+            customersFactory.deleteCustomer(customerId)
                 .success(function (status) {
+                    $log.log('status: ' + status);
                     if (status) {
                         for (var i = 0, len = $scope.customers.length; i < len; i++) {
-                            if ($scope.customers[i] == customerId) {
+                            if ($scope.customers[i].id == customerId) {
                                 // remove that record
                                 $scope.customers.splice(i, 1);
                                 break;
@@ -63,7 +64,7 @@
     };
 
     // to ensure $scope parm isn't minified, inject it magically. same for angular names for factories, services, values and constants.
-    CustomerController.$inject = ['$scope', 'customersFactory', 'appSettings', '$log'];
+    CustomerController.$inject = ['$scope', 'customersFactory', 'appSettings', '$log', '$window'];
 
     angular.module('customerApp').controller('CustomerController', CustomerController);
 

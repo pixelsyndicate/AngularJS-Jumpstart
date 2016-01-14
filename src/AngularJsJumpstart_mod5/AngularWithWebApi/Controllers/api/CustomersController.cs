@@ -122,12 +122,15 @@ namespace AngularWithWebApi.Controllers.api
         }
 
         // DELETE: api/Customers/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             var data = CustomerOrderDataFactory.GetData();
             var toDelete = data.Find(x => x.id == id);
             var result = data.Remove(toDelete);
-
+            if (result)
+                return Ok(result);
+            else
+                return NotFound();
         }
 
 
