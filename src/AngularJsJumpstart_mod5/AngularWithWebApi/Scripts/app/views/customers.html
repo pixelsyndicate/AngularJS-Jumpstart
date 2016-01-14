@@ -26,18 +26,21 @@
             transition: all 1s ease-in-out;
         }
 </style>
-<h3>{{ appSettings.title }}</h3>
-<div class="row">
-    <div class="col-sm-8">
-        <div class="form-group form-inline">
-            <label>
-                Filter By:
-            </label>
-            <input type="text" ng-model="customerFilter" data-ng-mouseup="customerFilter = ''" class="form-control" />
-            <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
-        </div>
+
+<div class="container">
+    <h3>{{ appSettings.title }}</h3>
+    <div class="row">
+    <div class="form-group form-inline">
+        <label for="filterTxtBx">
+            Filter By:
+        </label>
+        <input id="filterTxtBx" type="text" ng-model="customerFilter" data-ng-mouseup="customerFilter = ''" class="form-control" />
+        <button type="button" class="btn btn-sm" data-ng-click="customerFilter = ''">clear</button>
     </div>
-    <div class="col-sm-4">
+
+
+
+
         <h4>Total Customers: {{ customers.length }}</h4>
     </div>
     <div class="col-sm-12">
@@ -58,6 +61,7 @@
                 <th ng-click="orderByMe('orderTotal');">
                     Order Total <i ng-class="{'glyphicon glyphicon-arrow-down' : reverse && sortBy=='orderTotal', 'glyphicon glyphicon-arrow-up' : !reverse && sortBy=='orderTotal', 'hidden' : sortBy != 'orderTotal'}"><span class="label label-info rotate">{{ reverse?'DESC':'ASC' }}</span></i>
                 </th>
+                <th>Orders</th>
                 <th>&nbsp;</th>
             </tr>
             <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
@@ -66,9 +70,10 @@
                 <td>{{ cust.joined | date}}</td>
                 <td>{{ cust.orderTotal | currency }}</td>
                 <td><a href="#/orders/{{cust.id}}">view {{ cust.orders.length }} orders</a></td>
+                <td class="center"><span class="glyphicon glyphicon-remove delete" ng-click="deleteCustomer(cust.id)"></span></td>
             </tr>
         </table>
-        <div class=" well well-sm">
+        <div class="well well-sm">
             <h3>variables:</h3>
             <ul>
                 <li class="">sortBy = {{ sortBy }}</li>

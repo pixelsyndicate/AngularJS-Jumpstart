@@ -23,41 +23,12 @@ namespace AngularWithWebApi.Controllers.api
         public string product { get; set; }
         public double total { get; set; }
     }
-    public class CustomersController : ApiController
+
+    public static class CustomerOrderDataFactory
     {
-
-       
-
-        // GET: api/Customers
-        public IEnumerable<Customer> Get()
+        public static List<Customer> GetData()
         {
-            return fakeData;
-            //return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Customers/5
-        public Customer Get(int id)
-        {
-            var data = fakeData;
-            return data.FirstOrDefault(x => x.id == id);
-        }
-
-        // POST: api/Customers
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Customers/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Customers/5
-        public void Delete(int id)
-        {
-        }
-
-        private List<Customer> fakeData = new List<Customer>() {
+            return new List<Customer>() {
                 new Customer {
                 id = 1,
                 joined = "2000-12-02",
@@ -119,5 +90,95 @@ namespace AngularWithWebApi.Controllers.api
                 }
             }
         };
+        }
+
+    }
+
+    public class CustomersController : ApiController
+    {
+        // GET: api/Customers
+        public IEnumerable<Customer> Get()
+        {
+            var foundCustomers = CustomerOrderDataFactory.GetData();
+            return foundCustomers;
+            //return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/Customers/5
+        public Customer Get(int id)
+        {
+            var data = CustomerOrderDataFactory.GetData();
+            return data.FirstOrDefault(x => x.id == id);
+        }
+
+        // POST: api/Customers
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT: api/Customers/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Customers/5
+        public void Delete(int id)
+        {
+            var data = CustomerOrderDataFactory.GetData();
+            var toDelete = data.Find(x => x.id == id);
+            var result = data.Remove(toDelete);
+
+        }
+
+
+    }
+
+    public class OrdersController : ApiController
+    {
+        // GET: api/Customers
+        public IEnumerable<Order> Get()
+        {
+            var data = CustomerOrderDataFactory.GetData();
+            List<Order> ordersToReturn = new List<Order>();
+            foreach (var c in data)
+            {
+                foreach (var o in c.orders)
+                {
+                    ordersToReturn.Add(o);
+                }
+            }
+            return ordersToReturn;
+        }
+
+        // GET: api/Customers/5
+        public Order Get(int id)
+        {
+            //  var data = fakeData;
+            // return data.Where(x => x.orders.Select(y => y.id == id));
+            return new Order();
+        }
+
+
+
+        // POST: api/Customers
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT: api/Customers/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Customers/5
+        public void Delete(int id)
+        {
+            //var data = fakeData;
+            //var toDelete = fakeData.Find(x => x.id == id);
+            //var result = data.Remove(toDelete);
+
+        }
+
+
     }
 }

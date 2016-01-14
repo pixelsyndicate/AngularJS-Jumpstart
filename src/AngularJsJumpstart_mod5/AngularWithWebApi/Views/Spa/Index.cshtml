@@ -12,20 +12,18 @@
 <script src="~/Scripts/app/modules/customerApp.js"></script>
 <script src="~/Scripts/app/controllers/customerController.js"></script>
 <script src="~/Scripts/app/controllers/ordersController.js"></script>
+<script src="~/Scripts/app/controllers/allOrdersController.js"></script>
 <script src="~/Scripts/app/services/customersFactory.js"></script>
-<script src="~/Scripts/app/services/customersService.js"></script>
 <script src="~/Scripts/app/services/values.js"></script>
-<div data-ng-app="customerApp">
+<div data-ng-app="customerApp" class="container">
 
 
-    <div class="jumbotron">
+    <div class="jumbotron hidden">
         <h2>Asp.Net + Angular JS (SPA)</h2>
         <p class="lead">ASP.NET SPA using AngularJs, HTML, CSS, and JavaScript.</p>
-        <p><a href="https://angularjs.org/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            </div>
 
-    </div>
-
-    <div ng-view>
+    <div class="container" ng-view>
 
     </div>
 

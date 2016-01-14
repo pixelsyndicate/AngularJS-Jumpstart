@@ -13,6 +13,10 @@ angular.module('customerApp').config(
                 controller: 'OrdersController',
                 templateUrl: '../scripts/app/views/orders.html'
             })
+            .when('/orders/', {
+                controller: 'AllOrdersController',
+                templateUrl: '../scripts/app/views/allorders.html'
+            })
             .otherwise({ redirectTo: '/' });
 
     });

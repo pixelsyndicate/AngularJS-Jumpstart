@@ -8,7 +8,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="~/#/customers">Customers</a></li>
+                <li><a href="~/#/orders">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="body-content">
+
         @RenderBody()
     </div>
 </body>
