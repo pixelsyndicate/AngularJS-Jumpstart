@@ -1,31 +1,4 @@
-﻿<style>
-    table.table th {
-        background-color: #bbb;
-        cursor: pointer;
-        -webkit-user-select: none; /* Chrome/Safari */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* IE10+ */
-        /* Rules below not implemented in browsers yet */
-        -o-user-select: none;
-        user-select: none;
-    }
-
-
-
-    .label:hover {
-        transform: rotate(360deg);
-        background: #9351A6;
-        border-radius: 50%;
-    }
-
-    .rotate {
-        transition: all 0.5s ease-in-out;
-    }
-
-        .rotate:hover {
-            transition: all 1s ease-in-out;
-        }
-</style>
+﻿
 
 <div class="container">
     <h3>{{ appSettings.title }}</h3>
@@ -64,9 +37,9 @@
                 <th>Orders</th>
                 <th>&nbsp;</th>
             </tr>
-            <tr ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
+            <tr class="repeat-animation" ng-repeat="cust in customers | filter: customerFilter | orderBy:sortBy:reverse">
                 <td ng-bind="cust.name | uppercase"></td>
-                <td>{{ cust.city | lowercase}}</td>
+                <td class="fade-animation">{{ cust.city | lowercase}}</td>
                 <td>{{ cust.joined | date}}</td>
                 <td>{{ cust.orderTotal | currency }}</td>
                 <td><a href="#/orders/{{cust.id}}">view {{ cust.orders.length }} orders</a></td>

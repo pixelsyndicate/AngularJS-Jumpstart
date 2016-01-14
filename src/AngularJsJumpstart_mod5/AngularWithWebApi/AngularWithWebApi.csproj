@@ -139,6 +139,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angular-animations.css">
+      <DependentUpon>angular-animations.less</DependentUpon>
+    </Content>
+    <Content Include="Content\angular-animations.min.css">
+      <DependentUpon>angular-animations.css</DependentUpon>
+    </Content>
+    <Content Include="Content\angular-styles.css">
+      <DependentUpon>angular-styles.less</DependentUpon>
+    </Content>
+    <Content Include="Content\angular-styles.min.css">
+      <DependentUpon>angular-styles.css</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -194,6 +206,12 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Content\angular-animations.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\angular-styles.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />

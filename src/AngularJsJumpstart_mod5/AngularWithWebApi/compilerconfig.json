@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/angular-animations.css",
+    "inputFile": "Content/angular-animations.less"
+  },
+  {
+    "outputFile": "Content/angular-styles.css",
+    "inputFile": "Content/angular-styles.less"
+  }
+]
